@@ -3,16 +3,29 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { MaterialModule } from './material.module';
+import { AuthModule } from './auth/auth.module';
+import { AppHttpInterceptorProvider } from './app.interceptor';
+import { AuthHttpInterceptorProvider } from './auth/auth.interceptor';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MaterialModule,
+    AuthModule
   ],
-  providers: [],
+  providers: [
+    AppHttpInterceptorProvider,
+    AuthHttpInterceptorProvider
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

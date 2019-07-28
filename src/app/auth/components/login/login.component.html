@@ -1,0 +1,30 @@
+<div class="container d-flex justify-content-center align-items-start">
+  <mat-card class="login-card mat-elevation-z6">
+    <mat-card-header color="primary" style="margin: -16px -16px 0px -16px">
+      <mat-card-title align="center">
+        <h2>{{title}}</h2>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-divider></mat-divider>
+    <mat-card-content>
+      <form [formGroup]="form" class="login-card-content" [style.fontSize.px]="16">
+        <mat-form-field [hideRequiredMarker]="true" class="w-100">
+          <input formControlName="username" matInput placeholder="Your username" required>
+        </mat-form-field>
+        <mat-form-field [hideRequiredMarker]="true" class="w-100">
+          <input formControlName="password" [type]="hide ? 'password' : 'text'" matInput placeholder="Your password"
+            required>
+          <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          <mat-hint align="end">Forgot&nbsp;<a class="login-card-link"
+              [routerLink]="['/auth/forgot']"><strong>Password?</strong></a></mat-hint>
+        </mat-form-field>
+        <div class="d-flex login-card-actions align-items-center mt-2">
+          <button mat-raised-button color="primary" (click)="login()">{{'log in'| uppercase}}</button>
+          <span class="ml-auto">Don't have an account?&nbsp;<a class="login-card-link"
+              [routerLink]="['/auth/signup']"><strong>Sign
+                up</strong></a></span>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
