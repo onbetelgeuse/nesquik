@@ -8,14 +8,13 @@ import { OpenWeatherMapApiService } from 'src/app/openweathermap/services/openwe
   styleUrls: ['./list.component.css']
 })
 export class ListComponent implements OnInit {
-
   constructor(
     private apiWeather: OpenWeatherMapApiService,
-    private dashboardService: DashboardService) { }
+    private dashboardService: DashboardService
+  ) {}
 
   ngOnInit() {
-    this.dashboardService.getValues().subscribe(res => console.log(res));
-    this.apiWeather.find('lyon').subscribe(res=>console.log(res));
+    this.dashboardService.getMe().subscribe(res => console.log(res));
+    this.apiWeather.find('lyon').subscribe(res => console.log(res));
   }
-
 }

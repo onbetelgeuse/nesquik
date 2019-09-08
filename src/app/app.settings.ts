@@ -1,3 +1,3 @@
 export const APP_SETTINGS = {
-    baseUrl: 'http://localhost/chocolate'
+    baseUrl: 'http://localhost:3000'
 }

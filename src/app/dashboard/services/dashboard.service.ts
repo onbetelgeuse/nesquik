@@ -13,4 +13,8 @@ export class DashboardService {
   getValues(): Observable<string[]> {
     return this.http.get<string[]>(`${APP_SETTINGS.baseUrl}/api/values`);
   }
+
+  getMe(): Observable<any> {
+    return this.http.get<any>(`${APP_SETTINGS.baseUrl}/api/auth/me`);
+  }
 }
