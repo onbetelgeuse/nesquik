@@ -46,3 +46,4 @@ testem.log
 Thumbs.db
 privatekey
 publickey
+package-lock.json

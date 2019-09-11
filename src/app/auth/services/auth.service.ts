@@ -5,7 +5,7 @@ import { throwError, Observable } from 'rxjs';
 import { catchError, tap, map } from 'rxjs/operators';
 import { APP_SETTINGS } from '../../app.settings';
 import { AccessToken } from '../shared/access_token.model';
-import { ResponseBase } from '../shared/responsebase.model';
+import * as moment from 'moment';
 
 @Injectable({
   providedIn: 'root'
@@ -34,7 +34,9 @@ export class AuthService {
             this.storageService.set(
               'access_token',
               accessToken,
-              accessToken.expiresIn
+              moment()
+                .add(accessToken.expiresIn, 'second')
+                .valueOf()
             );
           }
         }),
