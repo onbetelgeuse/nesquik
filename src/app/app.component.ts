@@ -9,9 +9,11 @@ export class AppComponent implements OnInit, OnDestroy {
   private intervalId: any;
   public title = 'nesquik';
   public now: number;
+  public year: number;
 
   public ngOnInit() {
-    this.intervalId = setInterval(() => (this.now = Date.now()), 1);
+    this.year = new Date().getFullYear();
+    this.intervalId = setInterval(() => (this.now = Date.now()), 500);
   }
 
   public ngOnDestroy() {

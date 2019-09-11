@@ -9,11 +9,13 @@ import { MaterialModule } from './material.module';
 import { AuthModule } from './auth/auth.module';
 import { AppHttpInterceptorProvider } from './app.interceptor';
 import { AuthHttpInterceptorProvider } from './auth/auth.interceptor';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent
+    NavbarComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
