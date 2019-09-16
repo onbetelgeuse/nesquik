@@ -5,15 +5,14 @@ import { throwError, Observable } from 'rxjs';
 import { catchError, tap, map } from 'rxjs/operators';
 import { APP_SETTINGS } from '../../app.settings';
 import { AccessToken } from '../shared/access_token.model';
-import * as moment from 'moment';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
   constructor(
     private http: HttpClient,
-    private storageService: StorageService
+    private storageService: StorageService,
   ) {}
 
   get isLogged(): boolean {
@@ -23,7 +22,7 @@ export class AuthService {
   login(values: any): Observable<boolean> {
     const body = {
       username: values.username,
-      password: values.password
+      password: values.password,
     };
 
     return this.http
@@ -34,16 +33,14 @@ export class AuthService {
             this.storageService.set(
               'access_token',
               accessToken,
-              moment()
-                .add(accessToken.expiresIn, 'second')
-                .valueOf()
+              accessToken.expiresIn,
             );
           }
         }),
         map(res => !!res),
         catchError((err: HttpErrorResponse) => {
           return throwError(err);
-        })
+        }),
       );
   }
 
@@ -57,12 +54,12 @@ export class AuthService {
       lastName: values.lastName,
       email: values.email,
       username: values.username,
-      password: values.password
+      password: values.password,
     };
 
     return this.http.post(
       `${APP_SETTINGS.baseUrl}/api/accounts/register`,
-      body
+      body,
     );
   }
 
