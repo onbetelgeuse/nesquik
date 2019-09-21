@@ -1,27 +1,30 @@
 ### STAGE 1: Build ###
 
 # We label our stage as 'builder'
-FROM node:carbon-alpine as builder
+FROM node:alpine as builder
 
+# Create app directory
 WORKDIR /app
 
+# Install app dependencies
 COPY package*.json /app/
 
-RUN npm install
+RUN cd /app && npm set progress=false && npm install
 
-COPY ./ /app/
+# Copy project files into the docker image
+COPY . /app/
 
 
 ## Build the angular app in production mode and store the artifacts in dist folder
 ARG configuration=production
 
 
-RUN npm run build -- --output-path=./dist/out --configuration $configuration
+RUN cd /app && npm run build -- --output-path=./dist/out --configuration $configuration
 
 
 ### STAGE 2: Setup ###
 
-FROM nginx:1.17.3-alpine
+FROM nginx:alpine
 
 ## Copy our default nginx config
 COPY nginx/default.conf /etc/nginx/conf.d/
