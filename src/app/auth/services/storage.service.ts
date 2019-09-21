@@ -1,7 +1,7 @@
-import { Injectable } from "@angular/core";
+import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: "root"
+  providedIn: 'root',
 })
 export class StorageService {
   private storage = localStorage;
@@ -37,7 +37,7 @@ export class StorageService {
 
     this.storage[key] = JSON.stringify({
       payload: value,
-      expiry: expiryDate
+      expiry: expiryDate,
     });
   }
 
