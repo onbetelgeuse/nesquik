@@ -8,7 +8,9 @@ import {
 import { Observable } from 'rxjs';
 import { AuthService } from './services/auth.service';
 import { AccessToken } from './shared/access_token.model';
+import { Injectable } from "@angular/core";
 
+@Injectable()
 export class AuthHttpInterceptor implements HttpInterceptor {
   constructor(private authService: AuthService) {}
 

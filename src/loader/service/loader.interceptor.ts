@@ -8,7 +8,9 @@ import {
 import { Observable } from 'rxjs';
 import { LoaderService } from './loader.service';
 import { finalize } from 'rxjs/operators';
+import { Injectable } from "@angular/core";
 
+@Injectable()
 export class LoaderInterceptor implements HttpInterceptor {
   private requestCount = 0;
   constructor(private readonly loaderService: LoaderService) {}
