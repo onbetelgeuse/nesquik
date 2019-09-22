@@ -11,15 +11,15 @@ import { AccessToken } from '../shared/access_token.model';
 })
 export class AuthService {
   constructor(
-    private http: HttpClient,
-    private storageService: StorageService,
+    private readonly http: HttpClient,
+    private readonly storageService: StorageService,
   ) {}
 
-  get isLogged(): boolean {
+  public get isLogged(): boolean {
     return !!this.storageService.get('access_token');
   }
 
-  login(values: any): Observable<boolean> {
+  public login(values: any): Observable<boolean> {
     const body = {
       username: values.username,
       password: values.password,
@@ -48,7 +48,7 @@ export class AuthService {
     this.storageService.remove('access_token');
   }
 
-  signup(values: any): Observable<any> {
+  public signup(values: any): Observable<any> {
     const body = {
       firstName: values.firstName,
       lastName: values.lastName,
@@ -63,7 +63,7 @@ export class AuthService {
     );
   }
 
-  getAccessToken(): AccessToken {
+  public getAccessToken(): AccessToken {
     return this.storageService.get<AccessToken>('access_token');
   }
 }

@@ -1,13 +1,20 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 
 @Component({
-  selector: "app-navbar",
-  templateUrl: "./navbar.component.html",
-  styleUrls: ["./navbar.component.css"]
+  selector: 'app-navbar',
+  templateUrl: './navbar.component.html',
+  styleUrls: ['./navbar.component.css'],
 })
-export class NavbarComponent implements OnInit {
-  @Input() public now: number;
+export class NavbarComponent implements OnInit, OnDestroy {
+  private intervalId: any;
+  public now: number;
   constructor() {}
 
-  ngOnInit() {}
+  public ngOnInit() {
+    this.intervalId = setInterval(() => (this.now = Date.now()), 500);
+  }
+
+  public ngOnDestroy() {
+    clearInterval(this.intervalId);
+  }
 }

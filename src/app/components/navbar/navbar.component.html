@@ -1,43 +1,56 @@
 <nav class="navbar navbar-expand-md navbar-light bg-light mat-elevation-z6">
     <div class="container">
-        <span class="navbar-brand mb-0 h1">NesQuiK</span>
+        <a class="navbar-brand mb-0 h1" [routerLink]="['/']">NesQuiK</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarLink" aria-controls="navbarLink" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-        </button>
+      <span class="navbar-toggler-icon"></span>
+    </button>
         <div class="collapse navbar-collapse" id="navbarLink">
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link" [routerLink]="['/dashboard']" routerLinkActive="active">Dashboard</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" [routerLink]="['/admin']" routerLinkActive="active">Admin</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" [routerLink]="['/about']" routerLinkActive="active">About</a>
-                </li>
-            </ul>
-            <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
-                <li>
-                    <button mat-icon-button [matMenuTriggerFor]="menu">
+                    <a class="nav-link" [routerLink]="['/dashboard']" routerLinkActive="active">Dashboard</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            [routerLink]="['/admin']"
+            routerLinkActive="active"
+            >Admin</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            [routerLink]="['/about']"
+            routerLinkActive="active"
+            >About</a
+          >
+        </li>
+      </ul>
+      <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
+        <li>
+          <button mat-icon-button [matMenuTriggerFor]="menu">
+            <mat-icon>person</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item>
               <mat-icon>person</mat-icon>
+              <span>Profile</span>
             </button>
-                    <mat-menu #menu="matMenu">
-                        <button mat-menu-item>
-                <mat-icon>person</mat-icon>
-                <span>Profile</span>
-              </button>
-                        <button mat-menu-item>
-                <mat-icon>input</mat-icon>
-                <span>Login</span>
-              </button>
-                        <button mat-menu-item>
-                <mat-icon>close</mat-icon>
-                <span>Logout</span>
-              </button>
-                    </mat-menu>
-                </li>
-            </ul>
-            <p class="navbar-text mb-0 d-none d-md-flex">{{now | date:'HH:mm:ss'}}</p>
-        </div>
+            <button mat-menu-item>
+              <mat-icon>input</mat-icon>
+              <span>Login</span>
+            </button>
+            <button mat-menu-item>
+              <mat-icon>close</mat-icon>
+              <span>Logout</span>
+            </button>
+          </mat-menu>
+        </li>
+      </ul>
+      <p class="navbar-text mb-0 d-none d-md-flex">
+        {{ now | date: 'HH:mm:ss' }}
+      </p>
     </div>
+  </div>
 </nav>
