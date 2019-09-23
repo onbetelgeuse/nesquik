@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  socketio: { url: 'http://localhost:3000' },
+  toast: { delay: 5000, autohide: true },
 };
 
 /*

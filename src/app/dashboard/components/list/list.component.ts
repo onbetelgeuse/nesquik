@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DashboardService } from '../../services/dashboard.service';
-import { EventsService } from 'src/app/shared/services/events.service';
+import { EventsService } from '../../../shared/services/events.service';
+import { ToastService } from '../../../toast/service/toast.service';
 
 @Component({
   selector: 'app-list',
@@ -9,12 +10,12 @@ import { EventsService } from 'src/app/shared/services/events.service';
 })
 export class ListComponent implements OnInit {
   constructor(
-    private eventsService: EventsService,
-    private dashboardService: DashboardService,
+    private readonly eventsService: EventsService,
+    private readonly dashboardService: DashboardService,
   ) {}
 
   ngOnInit() {
-    this.dashboardService.getMe().subscribe(res => console.log(res));
+    this.dashboardService.getMe().subscribe();
     this.eventsService.NotifyPropertyChanged('temperature', 14.23);
   }
 }

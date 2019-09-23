@@ -7,9 +7,6 @@ import { DetailComponent } from './components/detail/detail.component';
 
 @NgModule({
   declarations: [ListComponent, DetailComponent],
-  imports: [
-    CommonModule,
-    DashboardRoutingModule
-  ]
+  imports: [CommonModule, DashboardRoutingModule],
 })
-export class DashboardModule { }
+export class DashboardModule {}
