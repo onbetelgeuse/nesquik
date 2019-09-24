@@ -1,6 +1,6 @@
 import { AppErrorHandler } from './app-error.handler';
-import { ErrorService } from 'src/app/shared/services/error.service';
-import { NotificationService } from 'src/app/shared/services/notification.service';
+import { ErrorService } from '../../../app/shared/services/error.service';
+import { NotificationService } from '../../../app/shared/services/notification.service';
 import { mock, instance } from 'ts-mockito';
 
 describe('AppError', () => {
