@@ -1,22 +1,15 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { LoaderComponent } from './loader.component';
+import { LoaderService } from '../service/loader.service';
+import { mock, instance } from 'ts-mockito';
 
 describe('LoaderComponent', () => {
   let component: LoaderComponent;
-  let fixture: ComponentFixture<LoaderComponent>;
-
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ LoaderComponent ]
-    })
-    .compileComponents();
-  }));
+  let service: LoaderService;
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LoaderComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    service = mock(LoaderService);
+
+    component = new LoaderComponent(instance(service));
   });
 
   it('should create', () => {
