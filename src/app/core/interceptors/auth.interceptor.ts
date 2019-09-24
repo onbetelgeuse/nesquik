@@ -21,10 +21,10 @@ export class AuthHttpInterceptor implements HttpInterceptor {
     next: HttpHandler,
   ): Observable<HttpEvent<any>> {
     let authReq = req;
-    const access_token: AccessToken = this.authService.getAccessToken();
+    const accessToken: AccessToken = this.authService.getAccessToken();
 
-    if (access_token && !req.url.match(/openweathermap.org/)) {
-      authReq = this.setHeaders(req, access_token.token);
+    if (accessToken && !req.url.match(/openweathermap.org/)) {
+      authReq = this.setHeaders(req, accessToken.token);
     }
 
     return next.handle(authReq);
