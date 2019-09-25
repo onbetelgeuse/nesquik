@@ -3,6 +3,7 @@ import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { AuthService } from '../../../shared/services/auth.service';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
+import { validateVerticalPosition } from '@angular/cdk/overlay';
 
 @Component({
   selector: 'app-signup',
@@ -17,16 +18,16 @@ export class SignupComponent implements OnInit {
   constructor(
     private router: Router,
     private fb: FormBuilder,
-    private authService: AuthService,
+    private readonly authService: AuthService,
   ) {}
 
   public ngOnInit() {
     this.form = this.fb.group({
-      firstName: ['', Validators.minLength(2)],
-      lastName: ['', Validators.minLength(2)],
-      email: ['', [Validators.email]],
-      username: ['', Validators.minLength(3)],
-      password: ['', Validators.minLength(6)],
+      firstName: ['', [Validators.minLength(2), Validators.required]],
+      lastName: ['', [Validators.minLength(2), Validators.required]],
+      email: ['', [Validators.email, Validators.required]],
+      username: ['', [Validators.minLength(3), Validators.required]],
+      password: ['', [Validators.minLength(6), Validators.required]],
     });
   }
 

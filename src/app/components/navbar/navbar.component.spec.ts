@@ -1,25 +1,25 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { NavbarComponent } from './navbar.component';
+import { fakeAsync, tick } from '@angular/core/testing';
 
 describe('NavbarComponent', () => {
   let component: NavbarComponent;
-  let fixture: ComponentFixture<NavbarComponent>;
-
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ NavbarComponent ]
-    })
-    .compileComponents();
-  }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NavbarComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    component = new NavbarComponent();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  describe('A) Nominal case', () => {
+    it('1) should create', () => {
+      expect(component).toBeTruthy();
+    });
+
+    it('2) now should be defined after 500ms', fakeAsync(() => {
+      // execute
+      component.ngOnInit();
+      tick(500);
+      expect(component.now).toBeDefined();
+      // verify
+      component.ngOnDestroy();
+    }));
   });
 });
