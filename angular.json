@@ -86,7 +86,7 @@
         "test": {
           "builder": "@angular-builders/jest:run",
           "options": {
-            "main": "src/test.ts",
+            "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.spec.json",
             "jestConfig": "jest.conf.js",
