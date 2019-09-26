@@ -29,6 +29,15 @@ export class AuthService {
     return this.storageService.get<AccessToken>('access_token');
   }
 
+  public getCurrentUser(): Observable<User> {
+    if (this.isLogged) {
+      return this.http
+        .get<User>(`${environment.baseUrl}/api/auth/me`)
+        .pipe(tap((user: User) => this.user$.next(user)));
+    }
+    this.user$.next(null);
+  }
+
   public login(user: LoginUser): Observable<boolean> {
     const body = {
       username: user.username,
@@ -69,6 +78,6 @@ export class AuthService {
       password: values.password,
     };
 
-    return this.http.post(`${environment.baseUrl}/api/accounts/register`, body);
+    return this.http.post(`${environment.baseUrl}/api/auth/register`, body);
   }
 }
