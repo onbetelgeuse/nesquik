@@ -7,6 +7,7 @@ import {
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Injectable()
 export class AppHttpInterceptor implements HttpInterceptor {
@@ -16,7 +17,7 @@ export class AppHttpInterceptor implements HttpInterceptor {
   ): Observable<HttpEvent<any>> {
     let appReq = req;
 
-    if (!req.url.match(/openweathermap.org/)) {
+    if (!this.contains([environment.api.upload], req.url)) {
       appReq = this.setHeaders(req);
     }
     return next.handle(appReq);
@@ -26,6 +27,10 @@ export class AppHttpInterceptor implements HttpInterceptor {
     return req.clone({
       setHeaders: { 'Content-Type': 'application/json; charset=utf-8' },
     });
+  }
+
+  private contains(items: string[] = [], url: string): boolean {
+    return items.some(pattern => url.match(pattern));
   }
 }
 

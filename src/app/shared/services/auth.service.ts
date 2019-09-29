@@ -32,7 +32,7 @@ export class AuthService {
   public getCurrentUser(): Observable<User> {
     if (this.isLogged) {
       return this.http
-        .get<User>(`${environment.baseUrl}/api/auth/me`)
+        .get<User>(`${environment.baseUrl}/${environment.api.auth.me}`)
         .pipe(tap((user: User) => this.user$.next(user)));
     }
     this.user$.next(null);
@@ -45,7 +45,10 @@ export class AuthService {
     };
 
     return this.http
-      .post<AccessToken>(`${environment.baseUrl}/api/auth/login`, body)
+      .post<AccessToken>(
+        `${environment.baseUrl}/${environment.api.auth.login}`,
+        body,
+      )
       .pipe(
         tap(accessToken => {
           if (accessToken) {
@@ -78,6 +81,9 @@ export class AuthService {
       password: values.password,
     };
 
-    return this.http.post(`${environment.baseUrl}/api/auth/register`, body);
+    return this.http.post(
+      `${environment.baseUrl}/${environment.api.auth.register}`,
+      body,
+    );
   }
 }

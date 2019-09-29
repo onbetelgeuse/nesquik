@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="input-group mb-3 mt-5">
+    <div class="custom-file">
+      <input
+        type="file"
+        name="document"
+        multiple
+        (change)="handleFileChange($event.target.files)"
+        class="custom-file-input"
+        id="inputGroupFile02"
+      />
+      <label
+        class="custom-file-label text-muted"
+        for="inputGroupFile02"
+        aria-describedby="inputGroupFileAddon02"
+        >Choose file...</label
+      >
+    </div>
+    <div class="input-group-append">
+      <button
+        type="button"
+        class="btn btn-primary"
+        id="inputGroupFileAddon02"
+        [disabled]="!files || files.length === 0"
+        (click)="uploadFiles()"
+      >
+        Upload
+      </button>
+    </div>
+  </div>
+  <div *ngIf="files != null">
+    <table class="table table-hover table-striped table-bordered">
+      <tbody>
+        <tr *ngFor="let file of files">
+          <td>{{ file.name }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
