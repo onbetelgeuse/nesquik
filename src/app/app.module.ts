@@ -18,6 +18,7 @@ import { AboutModule } from './about/about.module';
 import { LoaderInterceptorProvider } from './modules/loader/interceptor/loader.interceptor';
 import { AppErrorInterceptorProvider } from './core/interceptors/app-error.interceptor';
 import { AuthHttpInterceptorProvider } from './core/interceptors/auth.interceptor';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent, FooterComponent, NavbarComponent],
@@ -32,6 +33,7 @@ import { AuthHttpInterceptorProvider } from './core/interceptors/auth.intercepto
     AdminModule,
     AboutModule,
     MaterialModule,
+    HttpClientModule,
   ],
   providers: [
     AppErrorHandlerProvider,

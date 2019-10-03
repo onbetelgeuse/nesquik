@@ -17,10 +17,8 @@ export class ListComponent implements OnInit {
     private readonly fileService: FileService,
   ) {}
 
-  public async ngOnInit() {
-    const result = await this.fileService
-      .findAll()
-      .subscribe(res => console.table(res));
+  public ngOnInit() {
+    this.fileService.findAll().subscribe(res => console.table(res));
   }
 
   public handleFileChange(files: File[]) {
