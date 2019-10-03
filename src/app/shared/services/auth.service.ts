@@ -69,7 +69,9 @@ export class AuthService {
   public logout() {
     this.storageService.remove('access_token');
     this.user$.next(null);
-    this.router.navigate(['']);
+    if (this.router.url && !this.router.url.match('/auth/login')) {
+      this.router.navigate(['']);
+    }
   }
 
   public signup(values: SignupUser): Observable<any> {

@@ -2,67 +2,66 @@
 @import "variables";
 
 html {
-    position: relative;
-  }
-  
-  body {
-    margin: 0;
-    font-family: Roboto, 'Helvetica Neue', sans-serif;
-  }
-  
-  html,
-  body {
-    height: 100%;
-    min-height: 100vh;
-    overflow: hidden;
-  }
-  
-  router-outlet + *:not(app-footer) {
-    display: flex;
-    flex: 1 1 auto;
-    flex-direction: column;
-    min-height: 100vh;
-  }
-  
-  .nav-spacer {
-    flex: 1 1 auto;
-  }
-  
-  app-footer,
-  .footer {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    color: white;
-    text-align: center;
-    align-items: center;
-    background: $purple;
-  }
-  
-  .login-card {
-    margin-top: 40px;
-    min-width: 400px;
-    max-width: 680px;
-  }
-  
-  .login-card-content {
-    padding: 20px 20px 20px 20px;
-  }
-  
-  .login-card-link:hover,
-  .login-card-link {
-    color: rgba(0, 0, 0, 0.87);
-    text-decoration: none;
-  }
-  
-  .signup-card {
-    margin-top: 40px;
-    min-width: 400px;
-    max-width: 680px;
-  }
-  
-  app-toasts.ngb-toasts {
-    top: 60px;
-  }
-  
+  position: relative;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
+
+html,
+body {
+  height: 100%;
+  min-height: 100vh;
+}
+
+router-outlet+*:not(app-footer) {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  height: calc(100vh-74px);
+  padding-bottom: 24px;
+}
+
+.nav-spacer {
+  flex: 1 1 auto;
+}
+
+app-footer,
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  color: white;
+  text-align: center;
+  align-items: center;
+  background: $purple;
+}
+
+.login-card {
+  margin-top: 40px;
+  min-width: 400px;
+  max-width: 680px;
+}
+
+.login-card-content {
+  padding: 20px 20px 20px 20px;
+}
+
+.login-card-link:hover,
+.login-card-link {
+  color: rgba(0, 0, 0, 0.87);
+  text-decoration: none;
+}
+
+.signup-card {
+  margin-top: 40px;
+  min-width: 400px;
+  max-width: 680px;
+}
+
+app-toasts.ngb-toasts {
+  top: 60px;
+}
