@@ -1,22 +1,23 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ListComponent } from './list.component';
+import { UploadService } from '../../../shared/services/upload.service';
+import { FileService } from '../../../shared/services/file.service';
+import { mock, instance } from 'ts-mockito';
 
 describe('ListComponent', () => {
   let component: ListComponent;
-  let fixture: ComponentFixture<ListComponent>;
-
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ ListComponent ]
-    })
-    .compileComponents();
-  }));
+  let uploadService: UploadService;
+  let fileService: FileService;
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ListComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    uploadService = mock(UploadService);
+    fileService = mock(FileService);
+
+    component = new ListComponent(
+      instance(uploadService),
+      instance(fileService),
+    );
   });
 
   it('should create', () => {
