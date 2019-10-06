@@ -1,1 +1,11 @@
-<p>contract works!</p>
+<div class="container">
+  <p>Phone</p>
+  <p>{{ phone | phone }}</p>
+  <form [formGroup]="form">
+    <div class="form-group">
+      <label>Phone</label>
+      <input type="text" phone class="form-control" formControlName="phone" />
+      <pre>{{ this.form.controls?.phone?.value }}</pre>
+    </div>
+  </form>
+</div>
