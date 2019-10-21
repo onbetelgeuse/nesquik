@@ -21,6 +21,42 @@
       />
       <pre>{{ form.controls?.name.errors | json }}</pre>
     </div>
+    <div class="form-group">
+      <table class="table">
+        <thead>
+          <tr>
+            <td>#</td>
+            <td colspan="2">
+              <button
+                type="button"
+                class="btn btn-success"
+                (click)="addImageFormGroup()"
+              >
+                Add image
+              </button>
+            </td>
+          </tr>
+        </thead>
+        <tbody formArrayName="images">
+          <tr
+            *ngFor="let image of images.controls; let i = index"
+            [formGroup]="image"
+          >
+            <td>{{ 1 + i }}</td>
+            <td>
+              <input type="text" class="form-control" formControlName="name" />
+            </td>
+            <td>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="filename"
+              />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </form>
 </div>
 <div class="modal-footer">
