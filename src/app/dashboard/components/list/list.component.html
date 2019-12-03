@@ -1,4 +1,23 @@
 <div class="container">
+  <div class="form-group">
+    <label for="typeahead-http">Search communes:</label>
+    <input
+      id="typeahead-http"
+      type="text"
+      class="form-control"
+      [class.is-invalid]="searchFailed"
+      [ngbTypeahead]="search"
+      [inputFormatter]="formatter"
+      [resultFormatter]="formatter"
+      [editable]="false"
+      placeholder="Wikipedia search"
+    />
+    <span *ngIf="searching">searching...</span>
+    <div class="invalid-feedback" *ngIf="searchFailed">
+      Sorry, suggestions could not be loaded.
+    </div>
+  </div>
+
   <div class="input-group mb-3 mt-5">
     <div class="custom-file">
       <input

@@ -16,6 +16,7 @@ export const environment = {
       login: 'api/auth/login',
     },
     files: 'api/files',
+    communes: 'api/communes',
   },
 };
 

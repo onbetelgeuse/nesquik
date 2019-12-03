@@ -44,15 +44,15 @@ export class DetailsComponent implements OnInit {
     this.form = this.fb.group({
       name: [
         this.file.originalname,
-        [Validators.required],
         [
+          Validators.required,
           StructureValidators.uniqueName(
             this.fileService,
             this.file.originalname,
           ),
         ],
       ],
-      images: this.fb.array([], [], [StructureValidators.uniqueImage]),
+      images: this.fb.array([], [StructureValidators.uniqueImage], []),
     });
   }
 

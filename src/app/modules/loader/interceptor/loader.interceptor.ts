@@ -19,8 +19,10 @@ export class LoaderInterceptor implements HttpInterceptor {
     req: HttpRequest<any>,
     next: HttpHandler,
   ): Observable<HttpEvent<any>> {
-    this.requestCount++;
-    this.loaderService.show();
+    if (!['api/communes'].some(url => req.url.match(url))) {
+      this.requestCount++;
+      this.loaderService.show();
+    }
     return next.handle(req).pipe(
       finalize(() => {
         this.requestCount--;
