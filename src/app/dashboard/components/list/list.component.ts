@@ -25,15 +25,15 @@ export class ListComponent implements OnInit {
   public files: File[];
   public fileList: any[];
 
+  public searching = false;
+  public searchFailed = false;
+
   constructor(
     private readonly uploadService: UploadService,
     private readonly fileService: FileService,
     private readonly communeService: CommuneService,
     private modalService: NgbModal,
-    private readonly config: NgbTypeaheadConfig,
-  ) {
-    config.showHint = false;
-  }
+  ) {}
 
   public ngOnInit() {
     this.fileService.findAll().subscribe(res => (this.fileList = res));
@@ -54,10 +54,7 @@ export class ListComponent implements OnInit {
     (modalRef.componentInstance as DetailsComponent).file = file;
   }
 
-  searching = false;
-  searchFailed = false;
-
-  search = (text$: Observable<string>) =>
+  public search = (text$: Observable<string>) =>
     text$.pipe(
       debounceTime(300),
       distinctUntilChanged(),
