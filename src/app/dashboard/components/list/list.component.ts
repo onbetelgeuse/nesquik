@@ -71,5 +71,6 @@ export class ListComponent implements OnInit {
             ),
       ),
       tap(() => (this.searching = false)),
+      // tslint:disable-next-line: semicolon
     );
 }
