@@ -4,19 +4,18 @@
 
 export const environment = {
   production: false,
-  baseUrl: 'http://localhost:3000',
   socketio: { url: 'http://localhost:3000' },
   toast: { delay: 2500, autohide: true },
 
   api: {
-    upload: 'api/files/upload',
+    upload: '/api/files/upload',
     auth: {
-      register: 'api/auth/register',
-      me: 'api/auth/me',
-      login: 'api/auth/login',
+      register: '/api/auth/register',
+      me: '/api/auth/me',
+      login: '/api/auth/login',
     },
-    files: 'api/files',
-    communes: 'api/communes',
+    files: '/api/files',
+    communes: '/api/communes',
   },
 };
 

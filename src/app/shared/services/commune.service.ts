@@ -12,9 +12,7 @@ export class CommuneService {
 
   public search(term: string): Observable<string[]> {
     return this.http
-      .get<any[]>(
-        `${environment.baseUrl}/${environment.api.communes}?q=${term}`,
-      )
+      .get<any[]>(`${environment.api.communes}?q=${term}`)
       .pipe(map(values => values.map(value => value.name)));
   }
 }

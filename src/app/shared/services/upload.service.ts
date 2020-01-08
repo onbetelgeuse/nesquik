@@ -25,15 +25,10 @@ export class UploadService {
       formData.append('file', file, file.name);
     });
 
-    const req = new HttpRequest(
-      'POST',
-      `${environment.baseUrl}/${environment.api.upload}`,
-      formData,
-      {
-        reportProgress: true,
-        responseType: 'arraybuffer',
-      },
-    );
+    const req = new HttpRequest('POST', environment.api.upload, formData, {
+      reportProgress: true,
+      responseType: 'arraybuffer',
+    });
 
     return this.http
       .request(req)

@@ -32,7 +32,7 @@ export class AuthService {
   public getCurrentUser(): Observable<User> {
     if (this.isLogged) {
       return this.http
-        .get<User>(`${environment.baseUrl}/${environment.api.auth.me}`)
+        .get<User>(environment.api.auth.me)
         .pipe(tap((user: User) => this.user$.next(user)));
     }
     this.user$.next(null);
@@ -44,26 +44,21 @@ export class AuthService {
       password: user.password,
     };
 
-    return this.http
-      .post<AccessToken>(
-        `${environment.baseUrl}/${environment.api.auth.login}`,
-        body,
-      )
-      .pipe(
-        tap(accessToken => {
-          if (accessToken) {
-            this.storageService.set(
-              'access_token',
-              accessToken,
-              accessToken.expiresIn,
-            );
-          }
-        }),
-        map(res => !!res),
-        catchError((err: HttpErrorResponse) => {
-          return throwError(err);
-        }),
-      );
+    return this.http.post<AccessToken>(environment.api.auth.login, body).pipe(
+      tap(accessToken => {
+        if (accessToken) {
+          this.storageService.set(
+            'access_token',
+            accessToken,
+            accessToken.expiresIn,
+          );
+        }
+      }),
+      map(res => !!res),
+      catchError((err: HttpErrorResponse) => {
+        return throwError(err);
+      }),
+    );
   }
 
   public logout() {
@@ -83,9 +78,6 @@ export class AuthService {
       password: values.password,
     };
 
-    return this.http.post(
-      `${environment.baseUrl}/${environment.api.auth.register}`,
-      body,
-    );
+    return this.http.post(environment.api.auth.register, body);
   }
 }
