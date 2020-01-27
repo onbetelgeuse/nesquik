@@ -17,6 +17,7 @@ import { CommuneService } from '../shared/services/commune.service';
     FormsModule,
     ReactiveFormsModule,
     NgbModule,
+    SharedModule,
   ],
   providers: [CommuneService],
   entryComponents: [DetailsComponent],

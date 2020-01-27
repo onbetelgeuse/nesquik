@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  socketio: { url: 'http://localhost:3000' },
+  socket: { url: 'http://localhost:3000' },
   toast: { delay: 2500, autohide: true },
 
   api: {

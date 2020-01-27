@@ -14,6 +14,7 @@ import {
   catchError,
 } from 'rxjs/operators';
 import { CommuneService } from '../../../shared/services/commune.service';
+import { EventService } from '../../../shared/services/event.service';
 
 @Component({
   selector: 'app-list',
@@ -28,11 +29,16 @@ export class ListComponent implements OnInit {
   public searching = false;
   public searchFailed = false;
 
+  public formatter: (value: string) => string = (value: string): string =>
+    // tslint:disable-next-line: semicolon
+    value;
+
   constructor(
     private readonly uploadService: UploadService,
     private readonly fileService: FileService,
     private readonly communeService: CommuneService,
     private modalService: NgbModal,
+    private readonly eventService: EventService,
   ) {}
 
   public ngOnInit() {
@@ -73,4 +79,10 @@ export class ListComponent implements OnInit {
       tap(() => (this.searching = false)),
       // tslint:disable-next-line: semicolon
     );
+
+  public onMouseup(event): void {
+    const start = event.target.selectionStart;
+    const end = event.target.selectionEnd;
+    console.log(event.target.value.substr(start, end - start));
+  }
 }

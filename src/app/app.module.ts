@@ -20,6 +20,9 @@ import { AppErrorInterceptorProvider } from './core/interceptors/app-error.inter
 import { AuthHttpInterceptorProvider } from './core/interceptors/auth.interceptor';
 import { HttpClientModule, HttpClientXsrfModule } from '@angular/common/http';
 
+import { SocketIoModule } from 'ngx-socket-io';
+import { socketIoConfig } from './config/socketio.config';
+
 @NgModule({
   declarations: [AppComponent, FooterComponent, NavbarComponent],
   imports: [
@@ -38,6 +41,7 @@ import { HttpClientModule, HttpClientXsrfModule } from '@angular/common/http';
       cookieName: 'chlt',
       // headerName: 'X-XSRF-TOKEN', // this is optional
     }),
+    SocketIoModule.forRoot(socketIoConfig),
   ],
   providers: [
     AppErrorHandlerProvider,

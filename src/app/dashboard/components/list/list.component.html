@@ -61,7 +61,6 @@
       type="button"
       class="btn-primary btn"
       role="button"
-      (click)="open()"
     >
       open modal
     </button>
@@ -83,5 +82,92 @@
         </tr>
       </tbody>
     </table>
+  </div>
+
+  <div class="mt-3">
+    <div class="card">
+      <div class="card-header">
+        <div class="form-row form-row-header">
+          <div class="form-group col-12">
+            <label class="sr-only">Title</label>
+            <input type="text" class="form-control" />
+          </div>
+        </div>
+        <ul class="nav nav-tabs card-header-tabs mr-auto">
+          <li class="nav-item">
+            <a
+              class="nav-link active"
+              data-toggle="tab"
+              href="#nav-write"
+              role="tab"
+              aria-controls="nav-write"
+              aria-selected="true"
+              >Write</a
+            >
+          </li>
+          <li class="nav-item mr-auto">
+            <a
+              class="nav-link"
+              data-toggle="tab"
+              href="#nav-preview"
+              role="tab"
+              aria-controls="nav-preview"
+              aria-selected="false"
+              >Preview</a
+            >
+          </li>
+          <div class="nav nav-pills card-header-pills">
+            <div class="btn-toolbar">
+              <div class="btn-group">
+                <button
+                  type="button"
+                  class="btn btn-link px-2"
+                  ngbTooltip="Gras"
+                >
+                  <fa-icon icon="bold"></fa-icon>
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-link px-2"
+                  ngbTooltip="Italique"
+                >
+                  <fa-icon icon="italic"></fa-icon>
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-link px-2"
+                  ngbTooltip="Souligné"
+                >
+                  <fa-icon icon="underline"></fa-icon>
+                </button>
+              </div>
+            </div>
+          </div>
+        </ul>
+      </div>
+      <div class="card-body tab-content card-body-tab-content">
+        <div
+          class="tab-pane show active"
+          id="nav-write"
+          role="tabpanel"
+          aria-labelledby="nav-write-tab"
+        >
+          <div class="form-group col-12 px-0">
+            <textarea
+              type="text"
+              class="form-control"
+              rows="8"
+              (mouseup)="onMouseup($event)"
+            ></textarea>
+          </div>
+        </div>
+        <div
+          class="tab-pane show"
+          id="nav-preview"
+          role="tabpanel"
+          aria-labelledby="nav-preview-tab"
+        ></div>
+      </div>
+    </div>
   </div>
 </div>
