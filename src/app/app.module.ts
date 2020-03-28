@@ -23,6 +23,8 @@ import { HttpClientModule, HttpClientXsrfModule } from '@angular/common/http';
 import { SocketIoModule } from 'ngx-socket-io';
 import { socketIoConfig } from './config/socketio.config';
 
+import { NgSelectModule } from '@ng-select/ng-select';
+
 @NgModule({
   declarations: [AppComponent, FooterComponent, NavbarComponent],
   imports: [
@@ -42,6 +44,7 @@ import { socketIoConfig } from './config/socketio.config';
       // headerName: 'X-XSRF-TOKEN', // this is optional
     }),
     SocketIoModule.forRoot(socketIoConfig),
+    NgSelectModule,
   ],
   providers: [
     AppErrorHandlerProvider,

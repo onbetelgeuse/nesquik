@@ -13,7 +13,7 @@ export class FileService {
   constructor(private readonly http: HttpClient) {}
   public findAll(): Observable<FileDto[]> {
     return this.http
-      .get<FileDto[]>(environment.api.files)
+      .get<FileDto[]>(environment.api.documents)
       .pipe(tap((files: FileDto[]) => (this.files = files || [])));
   }
 }

@@ -17,7 +17,7 @@ export class AppHttpInterceptor implements HttpInterceptor {
   ): Observable<HttpEvent<any>> {
     let appReq = req;
 
-    if (!this.contains([environment.api.upload], req.url)) {
+    if (!this.contains([environment.api.documents + '/upload'], req.url)) {
       appReq = this.setHeaders(req);
     }
     return next.handle(appReq);

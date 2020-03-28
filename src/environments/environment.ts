@@ -8,13 +8,12 @@ export const environment = {
   toast: { delay: 2500, autohide: true },
 
   api: {
-    upload: '/api/files/upload',
     auth: {
       register: '/api/auth/register',
       me: '/api/auth/me',
       login: '/api/auth/login',
     },
-    files: '/api/files',
+    documents: '/api/documents',
     communes: '/api/communes',
   },
 };
